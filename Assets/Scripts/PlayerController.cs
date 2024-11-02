@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private BoxCollider2D playerCollider;
 
+
     private Rigidbody2D rigidBody;
     
     public float speed;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
+
+    public ScoreController scoreController;
 
     private bool isGrounded;
 
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Is Grounded");
+            // Debug.Log("Is Grounded");
             isGrounded = true;
         }
     }
@@ -116,8 +119,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Is not Grounded");
+            // Debug.Log("Is not Grounded");
             isGrounded = false;
         }
+    }
+
+    public void KeyPickup()
+    {
+        Debug.Log("Key Picked Up");
+        scoreController.IncreaseScore(50);
     }
 }
