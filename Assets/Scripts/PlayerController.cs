@@ -7,14 +7,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private BoxCollider2D playerCollider;
+
+    private Rigidbody2D rigidBody;
     
     public float speed;
+    public float jump;
 
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
 
+    private bool isGrounded;
+
     private void Start()
     {
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
+
         colliderSize = playerCollider.size;
         colliderOffset = playerCollider.offset;
     }
@@ -26,7 +33,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         PlayerMovementAnimation(horizontal, vertical);
-        MoveCharacter(horizontal);
+        MoveCharacter(horizontal, vertical);
 
         // CROUCH
         if (Input.GetKey(KeyCode.LeftControl))
@@ -39,11 +46,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MoveCharacter(float horizontal)
+    private void MoveCharacter(float horizontal, float vertical)
     {
+        // Running
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
+
+        // Jumping
+        if(vertical > 0 && isGrounded)
+        {
+            // animator.SetTrigger("Jump");
+            animator.SetBool("Jump", true);
+            rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
     }
 
     public void Crouch(bool crouch)
@@ -85,13 +105,29 @@ public class PlayerController : MonoBehaviour
         transform.localScale = scale;
 
         // PlayJumpAnimation(vertical);
-        if ( vertical > 0 )
+        // if ( vertical > 0 )
+        // {
+        //     animator.SetBool("Jump", true);
+        // }
+        // else
+        // {
+        //     animator.SetBool("Jump", false);
+        // }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Ground"))
         {
-            animator.SetBool("Jump", true);
+            Debug.Log("Is Grounded");
+            isGrounded = true;
         }
-        else
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Ground"))
         {
-            animator.SetBool("Jump", false);
+            Debug.Log("Is not Grounded");
+            isGrounded = false;
         }
     }
 }

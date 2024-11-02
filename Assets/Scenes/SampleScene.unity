@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 17484686}
   m_Layer: 31
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,6 +353,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1754914641626338313, guid: 158cb57c33381674a93b1dd5c715b56e,
+        type: 3}
+      propertyPath: jump
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1754914641626338313, guid: 158cb57c33381674a93b1dd5c715b56e,
         type: 3}
       propertyPath: speed
