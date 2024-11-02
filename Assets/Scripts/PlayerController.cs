@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             // animator.SetTrigger("Jump");
             animator.SetBool("Jump", true);
-            rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+            rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
         }
         else
         {
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            // Debug.Log("Is Grounded");
+            Debug.Log("Is Grounded");
             isGrounded = true;
         }
     }
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            // Debug.Log("Is not Grounded");
+            Debug.Log("Is not Grounded");
             isGrounded = false;
         }
     }
