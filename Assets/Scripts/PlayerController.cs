@@ -103,22 +103,12 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
-
-        // PlayJumpAnimation(vertical);
-        // if ( vertical > 0 )
-        // {
-        //     animator.SetBool("Jump", true);
-        // }
-        // else
-        // {
-        //     animator.SetBool("Jump", false);
-        // }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Is Grounded");
+            // Debug.Log("Is Grounded");
             isGrounded = true;
         }
     }
@@ -126,11 +116,8 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Is not Grounded");
+            // Debug.Log("Is not Grounded");
             isGrounded = false;
         }
     }
 }
-
-
-// 0.53, 1,2
