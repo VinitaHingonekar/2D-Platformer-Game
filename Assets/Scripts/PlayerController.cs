@@ -130,9 +130,9 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    // public void KillPlayer()
-    // {
-    //     Debug.Log("Player Dead");
-    //     animator.SetTrigger("Death");
-    // }
+    public void PlayDeathAnimation()
+    {
+        Debug.Log("Player Dead");
+        animator.SetTrigger("Death");
+    }
 }

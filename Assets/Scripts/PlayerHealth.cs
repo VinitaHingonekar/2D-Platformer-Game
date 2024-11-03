@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         if (invincibilityTimer > 0)
         {
             invincibilityTimer -= Time.deltaTime;
-        Debug.Log(invincibilityTimer);
+            // Debug.Log(invincibilityTimer);
         }
     }
 
@@ -42,7 +42,9 @@ public class PlayerHealth : MonoBehaviour
 
             if(currentLives <= 0)
             {
-                Death();
+                gameObject.GetComponent<PlayerController>().PlayDeathAnimation();
+                // Death();
+                Invoke("Death", 1.0f);
             }
         }
     }
