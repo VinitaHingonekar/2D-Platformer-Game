@@ -129,4 +129,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Key Picked Up");
         scoreController.IncreaseScore(50);
     }
+
+    
+    public void KillPlayer()
+    {
+        Debug.Log("Player Dead");
+        animator.SetTrigger("Death");
+    }
 }
