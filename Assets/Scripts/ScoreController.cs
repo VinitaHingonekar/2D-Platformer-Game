@@ -5,12 +5,12 @@ using TMPro;
 
 public class ScoreController : MonoBehaviour
 {
-    private TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI scoreText;
     private int score = 0;
 
     private void Awake()
     {
-        scoreText = GetComponent<TextMeshProUGUI>();
+        // scoreText = GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()

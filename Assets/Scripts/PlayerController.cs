@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private BoxCollider2D playerCollider;
 
-
     private Rigidbody2D rigidBody;
     
     public float speed;
@@ -131,9 +130,9 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    public void KillPlayer()
-    {
-        Debug.Log("Player Dead");
-        animator.SetTrigger("Death");
-    }
+    // public void KillPlayer()
+    // {
+    //     Debug.Log("Player Dead");
+    //     animator.SetTrigger("Death");
+    // }
 }

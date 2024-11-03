@@ -106,7 +106,8 @@ GameObject:
   - component: {fileID: 9064819015866846375}
   - component: {fileID: 698413683657181982}
   - component: {fileID: 1754914641626338313}
-  m_Layer: 0
+  - component: {fileID: 4572790102548760881}
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +124,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1549292461242304964}
@@ -290,3 +291,16 @@ MonoBehaviour:
   playerCollider: {fileID: 9064819015866846375}
   speed: 5
   jump: 10
+  scoreController: {fileID: 0}
+--- !u!114 &4572790102548760881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3521386689512906100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024b74d20342bd048a3e7afd77a533a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

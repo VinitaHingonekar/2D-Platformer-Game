@@ -3567,21 +3567,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3521386689512906100, guid: 158cb57c33381674a93b1dd5c715b56e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7292941741725392562, guid: 158cb57c33381674a93b1dd5c715b56e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7292941741725392562, guid: 158cb57c33381674a93b1dd5c715b56e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7292941741725392562, guid: 158cb57c33381674a93b1dd5c715b56e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3630,11 +3615,6 @@ PrefabInstance:
     - target: {fileID: 7292941741725392562, guid: 158cb57c33381674a93b1dd5c715b56e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9064819015866846375, guid: 158cb57c33381674a93b1dd5c715b56e,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
