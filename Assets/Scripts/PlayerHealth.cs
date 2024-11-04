@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // Destroy(gameObject);
         gameOverController.ShowGameOverScreen();
+        this.enabled = false;
     }
 
     public void UpdateLives()

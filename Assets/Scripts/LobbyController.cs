@@ -17,7 +17,7 @@ public class LobbyController : MonoBehaviour
 
     public void QuitGame()
     {
-
+        Application.Quit();
     }
 
 }
