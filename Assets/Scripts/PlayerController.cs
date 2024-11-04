@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
     
     public float speed;
-    public float jump;
+    public int jump;
 
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
@@ -60,7 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             // animator.SetTrigger("Jump");
             animator.SetBool("Jump", true);
-            rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
+            // rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
         }
         else
         {
