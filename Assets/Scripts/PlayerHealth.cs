@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerHealth : MonoBehaviour
@@ -11,8 +10,10 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI livesText;
 
-    public float invincibilityDuration = 50.0f;
+    public float invincibilityDuration = 1.0f;
     private float invincibilityTimer;
+
+    public GameOverController gameOverController;
 
     private void Start() 
     {
@@ -51,7 +52,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Death()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Destroy(gameObject);
+        gameOverController.ShowGameOverScreen();
     }
 
     public void UpdateLives()
