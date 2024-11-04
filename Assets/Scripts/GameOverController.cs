@@ -24,8 +24,14 @@ public class GameOverController : MonoBehaviour
 
     public void ReloadGame()
     {
-        Debug.Log("Reloading scene");
-        SceneManager.LoadScene(0);
+        // Debug.Log("Reloading scene");
+        SceneManager.LoadScene("Level 1");
+        gameOverPanel.SetActive(false);
+    }
+
+    public void ManinMenu()
+    {
+        SceneManager.LoadScene("Lobby");
         gameOverPanel.SetActive(false);
     }
 }
