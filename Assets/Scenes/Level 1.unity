@@ -6914,7 +6914,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1855169290}
     - target: {fileID: 3521386689512906100, guid: 158cb57c33381674a93b1dd5c715b56e,
         type: 3}
       propertyPath: m_Name
