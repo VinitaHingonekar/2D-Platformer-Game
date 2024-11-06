@@ -10,6 +10,7 @@ public class LevelOverScript : MonoBehaviour
         {
             Debug.Log("Next Level");
             LevelManager.Instance.MarkCurrentLevelCompleted();
+            // if()
             LevelManager.Instance.LoadNextLevel();            
         }
     }

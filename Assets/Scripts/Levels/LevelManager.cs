@@ -66,6 +66,12 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        // if(SceneManager.GetActiveScene().name == Levels[Levels.Length - 1])
+        // {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        // }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // Debug.Log("Levels[Levels.lenght] = " + Levels[Levels.Length - 1]);
     }
 }
