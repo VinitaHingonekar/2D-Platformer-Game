@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class LevelManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.DeleteAll();
         if(instance == null)
         {
             instance = this;
@@ -62,6 +64,8 @@ public class LevelManager : MonoBehaviour
         {
             SetLevelStatus(Levels[nextSceneIndex], LevelStatus.Unlocked);
         }
+
+        // UpdateButtonStates(); 
     }
 
     public void LoadNextLevel()
@@ -74,4 +78,6 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // Debug.Log("Levels[Levels.lenght] = " + Levels[Levels.Length - 1]);
     }
+
+
 }

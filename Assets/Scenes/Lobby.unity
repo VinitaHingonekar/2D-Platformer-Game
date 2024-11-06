@@ -3000,6 +3000,19 @@ MonoBehaviour:
   - Level 2
   - Level 3
   - Level 4
+  - Level 5
+  levelButtons:
+  - {fileID: 369650618}
+  - {fileID: 256609694}
+  - {fileID: 1531108959}
+  - {fileID: 1816422607}
+  - {fileID: 872549076}
+  levelButtonTexts:
+  - {fileID: 1534453439}
+  - {fileID: 1074169683}
+  - {fileID: 913064138}
+  - {fileID: 426792443}
+  - {fileID: 366248991}
 --- !u!4 &1588622065
 Transform:
   m_ObjectHideFlags: 0
