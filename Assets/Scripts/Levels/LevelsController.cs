@@ -9,6 +9,8 @@ public class LevelsController : MonoBehaviour
     {
         string levelName = "Level " + level;
         LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(levelName);
+        SoundManager.Instance.Play(Sounds.ButtonClick);
+
 
         switch(levelStatus)
         {

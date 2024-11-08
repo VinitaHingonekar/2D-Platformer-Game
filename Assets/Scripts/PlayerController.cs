@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
+        // SoundManager.Instance.Play(Sounds.PlayerMove);
 
         // Jumping
         if(vertical > 0 && isGrounded)

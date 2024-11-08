@@ -20,6 +20,7 @@ public class GameOverController : MonoBehaviour
     public void ShowGameOverScreen()
     {
         gameOverPanel.SetActive(true);
+        SoundManager.Instance.Play(Sounds.PlayerDeath);
     }
 
     public void ReloadGame()

@@ -22,17 +22,20 @@ public class LobbyController : MonoBehaviour
 
     public void PlayGame()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         SceneManager.LoadScene("Level 1");
     }
 
     public void OpenLevelsMenu()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         levelsMenu.SetActive(true);
         lobbyMenu.SetActive(false);
     }
 
     public void QuitGame()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         Application.Quit();
     }
 
