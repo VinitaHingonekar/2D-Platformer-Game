@@ -82,4 +82,8 @@ public enum Sounds
     PlayerMove,
     PlayerDeath,
     EnemyDeath,
+    LevelNew,
+    LevelFinish,
+    LevelFail,
+    KeyPickup
 }

@@ -20,11 +20,12 @@ public class GameOverController : MonoBehaviour
     public void ShowGameOverScreen()
     {
         gameOverPanel.SetActive(true);
-        SoundManager.Instance.Play(Sounds.PlayerDeath);
+        SoundManager.Instance.Play(Sounds.LevelFail);
     }
 
     public void ReloadGame()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         // Debug.Log("Reloading scene");
         SceneManager.LoadScene("Level 1");
         gameOverPanel.SetActive(false);
@@ -32,6 +33,7 @@ public class GameOverController : MonoBehaviour
 
     public void ManinMenu()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         SceneManager.LoadScene("Lobby");
         gameOverPanel.SetActive(false);
     }

@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public ParticleSystem deathParticleSystem;
+
     private void Start() 
     {
         // livesText = GetComponent<TextMeshProUGUI>();
@@ -42,16 +44,28 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isInvincible)
         {
+            // if(currentLives > 0)
             currentLives -= damage;
+                
             Debug.Log("current lives : "+currentLives);
             UpdateLives();
             // invincibilityTimer = invincibilityDuration;
 
-            if(currentLives <= 0)
+            if(currentLives == 0)
             {
                 gameObject.GetComponent<PlayerController>().PlayDeathAnimation();
                 // Death();
+                SoundManager.Instance.Play(Sounds.PlayerDeath);
+                if (deathParticleSystem != null)
+                {
+                    deathParticleSystem.Play();
+                }
+                this.enabled = false;
                 Invoke("Death", 1.0f);
+            }
+            else if( currentLives < 0)
+            {
+                Debug.Log("LIves less than 0");
             }
             else
             {
@@ -68,10 +82,6 @@ public class PlayerHealth : MonoBehaviour
 
         while (elapsedTime < invincibilityDuration)
         {
-            // Toggle the sprite renderer to create a blinking effect
-            // spriteRenderer.enabled = !spriteRenderer.enabled;
-
-            // Reduce alpha to make the player appear translucent
             Color color = spriteRenderer.color;
             color.a = color.a == 1f ? 0.3f : 1f;
             spriteRenderer.color = color;
@@ -90,12 +100,19 @@ public class PlayerHealth : MonoBehaviour
     {
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // Destroy(gameObject);
-        this.enabled = false;
+        // this.enabled = false;
+
+        
         gameOverController.ShowGameOverScreen();
     }
 
     public void UpdateLives()
     {
-        livesText.text = "Lives : " + currentLives;
+        if(currentLives < 0)
+        {
+            livesText.text = "Lives : 0";
+        }
+        else 
+            livesText.text = "Lives : " + currentLives;
     }    
 }

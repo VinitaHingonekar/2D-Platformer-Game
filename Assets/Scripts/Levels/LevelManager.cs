@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     public string Level1;
     public string[] Levels;
 
+    public float delayTime = 1f; // Time to wait before loading the next level
+
     void Awake()
     {
         PlayerPrefs.DeleteAll();
@@ -76,7 +78,16 @@ public class LevelManager : MonoBehaviour
 
         // }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SoundManager.Instance.Play(Sounds.LevelNew);
         // Debug.Log("Levels[Levels.lenght] = " + Levels[Levels.Length - 1]);
+    }
+
+    public IEnumerator LoadNextLevelWithDelay()
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SoundManager.Instance.Play(Sounds.LevelNew);
     }
 
 
