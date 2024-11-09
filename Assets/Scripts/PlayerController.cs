@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public int jump;
 
+    private bool isJumping = false; 
+
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
 
@@ -46,6 +48,13 @@ public class PlayerController : MonoBehaviour
         {
             Crouch(false);
         }
+
+        // JUMP
+
+        if (isGrounded && isJumping)
+        {
+            isJumping = false;
+        }
     }
 
     private void MoveCharacter(float horizontal, float vertical)
@@ -54,21 +63,18 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
-        // SoundManager.Instance.Play(Sounds.PlayerMove);
-        // Debug.Log("Movings");
 
         // Jumping
-        if(vertical > 0 && isGrounded)
+        if(vertical > 0 && isGrounded && !isJumping)
         {
-            // animator.SetTrigger("Jump");
-            animator.SetBool("Jump", true);
-            // rigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
+            isJumping = true;
+            animator.SetTrigger("Jump");
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
         }
-        else
-        {
-            animator.SetBool("Jump", false);
-        }
+        // else if(isGrounded)
+        // {
+        //     isJumping = false;
+        // }
     }
 
     public void Crouch(bool crouch)
