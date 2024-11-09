@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     private static int playerLives = 3;
-    private int currentLives;
+    public int currentLives;
 
     [SerializeField] TextMeshProUGUI livesText;
 
@@ -78,15 +78,20 @@ public class PlayerHealth : MonoBehaviour
     {
         isInvincible = true;
         float elapsedTime = 0f;
+        Debug.Log("Started Coroutine invincibily");
         // float blinkInterval;
 
         while (elapsedTime < invincibilityDuration)
         {
-            Color color = spriteRenderer.color;
-            color.a = color.a == 1f ? 0.3f : 1f;
-            spriteRenderer.color = color;
+            // Color color = spriteRenderer.color;
+            // color.a = color.a == 1f ? 0.3f : 1f;
+            // spriteRenderer.color = color;
+            spriteRenderer.enabled = !spriteRenderer.enabled;
 
             yield return new WaitForSeconds(blinkDuration);
+
+            // spriteRenderer.enabled = true;
+
             elapsedTime += blinkDuration;
         }
                 
