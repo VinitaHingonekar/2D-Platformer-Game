@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerHealth : MonoBehaviour
@@ -21,6 +22,12 @@ public class PlayerHealth : MonoBehaviour
 
     public ParticleSystem deathParticleSystem;
 
+    public Image[] hearts;
+    public Sprite fullHeart;
+
+    private Animator[] heartAnimators;
+    // public Sprite emptyHeart;
+
     private void Start() 
     {
         // livesText = GetComponent<TextMeshProUGUI>();
@@ -29,14 +36,23 @@ public class PlayerHealth : MonoBehaviour
         // invincibilityTimer = 0f;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        heartAnimators = new Animator[hearts.Length];
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            heartAnimators[i] = hearts[i].GetComponent<Animator>();
+        }
     }
 
     private void Update()
     {
-        // if (invincibilityTimer > 0)
+        // foreach (Image img in hearts)
         // {
-        //     invincibilityTimer -= Time.deltaTime;
-        //     spriteRenderer.enabled = !spriteRenderer.enabled;
+        //     img.sprite = emptyHeart;
+        // }
+        // for (int i = 0; i < currentLives; i++)
+        // {
+        //     hearts[i].sprite = fullHeart;
         // }
     }
 
@@ -113,11 +129,33 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateLives()
     {
-        if(currentLives < 0)
+        // if(currentLives < 0)
+        // {
+        //     livesText.text = "Lives : 0";
+        // }
+        // else 
+        //     livesText.text = "Lives : " + currentLives;
+        
+
+        // foreach (Image img in hearts)
+        // {
+        //     img.sprite = emptyHeart;
+        // }
+        for (int i = 0; i < hearts.Length; i++)
         {
-            livesText.text = "Lives : 0";
-        }
-        else 
-            livesText.text = "Lives : " + currentLives;
-    }    
+            if (i < currentLives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                if (hearts[i].enabled == true)
+                {
+                    heartAnimators[i].SetTrigger("Lost");
+                }
+
+                // hearts[i].enabled = false;
+            }
+        }    
+    }
 }

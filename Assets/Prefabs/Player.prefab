@@ -163,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c4d7d6470acd7bf45971042161c6e018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -256,7 +256,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2453253823599964397}
   playerCollider: {fileID: 9064819015866846375}
-  speed: 5
-  jump: 6
+  speed: 7
+  jump: 11
   scoreController: {fileID: 0}
 --- !u!114 &4572790102548760881
 MonoBehaviour:
@@ -297,11 +297,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024b74d20342bd048a3e7afd77a533a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLives: 0
   livesText: {fileID: 0}
   invincibilityDuration: 2
   blinkDuration: 0.1
   gameOverController: {fileID: 0}
   deathParticleSystem: {fileID: 3105280694406104747}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300010, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
 --- !u!198 &3105280694406104747
 ParticleSystem:
   m_ObjectHideFlags: 0
