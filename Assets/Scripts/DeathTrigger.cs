@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class DeathTrigger : MonoBehaviour
 {
     private Vector2 startPoint;
-    
+    public PlayerController player;
 
     private void Start() 
     {
-        PlayerController player = GetComponent<PlayerController>();
-
+        // PlayerController player = GetComponent<PlayerController>();
         startPoint = player.transform.position;  
     }
+    
     private void OnTriggerEnter2D(Collider2D other) {
         
         if( other.gameObject.GetComponent<PlayerController>() != null )

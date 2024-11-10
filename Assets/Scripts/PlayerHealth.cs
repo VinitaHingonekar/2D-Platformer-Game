@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Animator[] heartAnimators;
     // public Sprite emptyHeart;
+    
 
     private void Start() 
     {
@@ -46,14 +47,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        // foreach (Image img in hearts)
-        // {
-        //     img.sprite = emptyHeart;
-        // }
-        // for (int i = 0; i < currentLives; i++)
-        // {
-        //     hearts[i].sprite = fullHeart;
-        // }
+
     }
 
     public void TakeDamage(int damage)

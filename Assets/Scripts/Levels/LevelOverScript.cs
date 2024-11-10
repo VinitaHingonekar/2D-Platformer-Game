@@ -5,21 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class LevelOverScript : MonoBehaviour
 {
-    public ParticleSystem doorParticles; // Assign this in the Inspector
+    public ParticleSystem doorParticles;
+
+    private void Start() 
+    {
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if( other.gameObject.GetComponent<PlayerController>() != null)
         {
-            // Debug.Log("Next Level");
-            LevelManager.Instance.MarkCurrentLevelCompleted();
-            // if()
-            if (doorParticles != null)
-            {
-                doorParticles.Play();
-            }
+            KeyManager keyManager = GameObject.Find("KeyManager").GetComponent<KeyManager>();
 
-            // LevelManager.Instance.LoadNextLevel();   
-            StartCoroutine(LevelManager.Instance.LoadNextLevelWithDelay());         
+            if( keyManager.keysCollected == 3)
+            {
+                LevelManager.Instance.MarkCurrentLevelCompleted();
+                if (doorParticles != null)
+                {
+                    doorParticles.Play();
+                }
+
+                StartCoroutine(LevelManager.Instance.LoadNextLevelWithDelay());         
+            }
+            else
+            {
+                Debug.Log("Collect all the keys");
+            }
         }
     }
 }
