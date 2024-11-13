@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    private int score = 0;
+    public int score = 0;
 
     private void Awake()
     {
@@ -28,4 +28,9 @@ public class ScoreController : MonoBehaviour
     {
         scoreText.text = "Score : " + score;
     }    
+
+    public int GetScore()
+    {
+        return score;
+    }
 }

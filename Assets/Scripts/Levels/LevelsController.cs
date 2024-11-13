@@ -8,6 +8,7 @@ public class LevelsController : MonoBehaviour
     public void LoadLevel(int level)
     {
         string levelName = "Level " + level;
+        Debug.Log(levelName);
         LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(levelName);
         SoundManager.Instance.Play(Sounds.ButtonClick);
 
@@ -19,9 +20,11 @@ public class LevelsController : MonoBehaviour
                 break;
             case LevelStatus.Unlocked:
                 SceneManager.LoadScene(levelName);
+                Debug.Log("Level loaded");
                 break;
             case LevelStatus.Completed:
                 SceneManager.LoadScene(levelName);
+                Debug.Log("Level loaded");
                 break;
         }
 

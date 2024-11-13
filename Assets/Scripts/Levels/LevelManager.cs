@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,11 +12,10 @@ public class LevelManager : MonoBehaviour
     public string Level1;
     public string[] Levels;
 
-    public float delayTime = 1f; // Time to wait before loading the next level
+    public float delayTime = 1f; 
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
         if(instance == null)
         {
             instance = this;
@@ -32,15 +29,24 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if(GetLevelStatus(Levels[0]) == LevelStatus.Locked)
+        if (!PlayerPrefs.HasKey(Levels[0]))
         {
+            foreach (string level in Levels)
+            {
+                SetLevelStatus(level, LevelStatus.Locked);
+            }
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);
         }
+
+        // if(GetLevelStatus(Levels[0]) == LevelStatus.Locked)
+        // {
+        //     SetLevelStatus(Levels[0], LevelStatus.Unlocked);
+        // }
     }
 
     public LevelStatus GetLevelStatus(string level)
     {
-        LevelStatus levelStatus = (LevelStatus) PlayerPrefs.GetInt(level, 0);
+        LevelStatus levelStatus = (LevelStatus) PlayerPrefs.GetInt(level);
         return levelStatus;
     }
 
@@ -48,16 +54,13 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(level, (int)levelStatus);
         Debug.Log("Setting Level: " + level + " Status : " + levelStatus);
+        PlayerPrefs.Save();
     }
 
     public void MarkCurrentLevelCompleted()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SetLevelStatus(currentScene.name, LevelStatus.Completed);
-
-        // int nextSceneIndex = currentScene.buildIndex + 1;
-        // Scene nextScene = SceneManager.GetSceneByBuildIndex(nextSceneIndex);
-        // SetLevelStatus(nextScene.name, LevelStatus.Unlocked);
 
         int currentSceneIndex = Array.FindIndex(Levels, level => level == currentScene.name);
 
@@ -66,29 +69,20 @@ public class LevelManager : MonoBehaviour
         {
             SetLevelStatus(Levels[nextSceneIndex], LevelStatus.Unlocked);
         }
-
-        // UpdateButtonStates(); 
     }
 
-    public void LoadNextLevel()
-    {
-        // if(SceneManager.GetActiveScene().name == Levels[Levels.Length - 1])
-        // {
-        //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    // public void LoadNextLevel()
+    // {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //     SoundManager.Instance.Play(Sounds.LevelNew);
+    // }
 
-        // }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SoundManager.Instance.Play(Sounds.LevelNew);
-        // Debug.Log("Levels[Levels.lenght] = " + Levels[Levels.Length - 1]);
-    }
+    // public IEnumerator LoadNextLevelWithDelay()
+    // {
+    //     yield return new WaitForSeconds(delayTime);
 
-    public IEnumerator LoadNextLevelWithDelay()
-    {
-        yield return new WaitForSeconds(delayTime);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SoundManager.Instance.Play(Sounds.LevelNew);
-    }
-
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //     SoundManager.Instance.Play(Sounds.LevelNew);
+    // }
 
 }

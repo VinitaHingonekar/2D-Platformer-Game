@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
 
         colliderSize = playerCollider.size;
         colliderOffset = playerCollider.offset;
+
+        // Debug.Log("-Level 1: " + PlayerPrefs.GetInt("Level 1", -1));
+        // Debug.Log("-Level 2: " + PlayerPrefs.GetInt("Level 2", -1));
+        // Debug.Log("-Level 3: " + PlayerPrefs.GetInt("Level 3", -1));
+        // Debug.Log("-Level 4: " + PlayerPrefs.GetInt("Level 4", -1));
+        // Debug.Log("-Level 5: " + PlayerPrefs.GetInt("Level 5", -1));
     }
 
     // Update is called once per frame

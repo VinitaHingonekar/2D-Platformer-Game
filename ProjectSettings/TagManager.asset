@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - KeyManager
+  - TeleportPanel
   layers:
   - Default
   - TransparentFX

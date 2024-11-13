@@ -10,14 +10,21 @@ public class Teleporter : MonoBehaviour
     public float animationDelay = 1f;
 
     private bool playerInRange = false;
-        private Transform playerTransform;
+    private Transform playerTransform;
     private Animator playerAnimator;
+
+    public GameObject teleportTextPanel;
 
     // public Animator animator;
 
+    private void Start() 
+    {
+        // teleportTextPanel = GameObject.FindWithTag("TeleportPanel");
+    }
+
     private void Update()
     {
-        // Check if player is within range and presses 'E' key to teleport
+
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Animator playerAnimator = playerTransform.GetComponent<Animator>();
@@ -38,26 +45,28 @@ public class Teleporter : MonoBehaviour
     //     }  
     // }
 
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            if (other.gameObject.GetComponent<PlayerController>() != null)
-            {
-                playerInRange = true;
-                playerTransform = other.transform;
-                playerAnimator = other.GetComponent<Animator>();
-            }
+            playerInRange = true;
+            playerTransform = other.transform;
+            playerAnimator = other.GetComponent<Animator>();
+            teleportTextPanel.SetActive(true);
         }
+    }
 
-        private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        // If player exits trigger area, prevent teleportation
+        if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            // If player exits trigger area, prevent teleportation
-            if (other.gameObject.GetComponent<PlayerController>() != null)
-            {
-                playerInRange = false;
-                playerTransform = null;
-                playerAnimator = null;
-            }
+            playerInRange = false;
+            playerTransform = null;
+            playerAnimator = null;
+            teleportTextPanel.SetActive(false);
         }
+    }
 
     private IEnumerator TeleportPlayer(Transform player, Animator playerAnimator)
     {
