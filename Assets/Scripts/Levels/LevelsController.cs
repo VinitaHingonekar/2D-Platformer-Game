@@ -20,11 +20,9 @@ public class LevelsController : MonoBehaviour
                 break;
             case LevelStatus.Unlocked:
                 SceneManager.LoadScene(levelName);
-                Debug.Log("Level loaded");
                 break;
             case LevelStatus.Completed:
                 SceneManager.LoadScene(levelName);
-                Debug.Log("Level loaded");
                 break;
         }
 

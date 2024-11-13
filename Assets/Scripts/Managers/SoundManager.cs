@@ -15,7 +15,6 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
         if(instance == null)
         {
             instance = this;
@@ -29,8 +28,10 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        soundMusic.loop = true;
         PlayMusic(global::Sounds.Music);
     }
+
 
     public void PlayMusic(Sounds sound)
     {

@@ -12,18 +12,11 @@ public class ButtonsContoller : MonoBehaviour
     private void Start() 
     {
         UpdateButtonStates();
-        Debug.Log("Called Update Button States");
     }
 
     void OnEnable()
     {
         UpdateButtonStates();
-        // Debug.Log("Level 1: " + PlayerPrefs.GetInt("Level 1", -1));
-        // Debug.Log("Level 2: " + PlayerPrefs.GetInt("Level 2", -1));
-        // Debug.Log("Level 3: " + PlayerPrefs.GetInt("Level 3", -1));
-        // Debug.Log("Level 4: " + PlayerPrefs.GetInt("Level 4", -1));
-        // Debug.Log("Level 5: " + PlayerPrefs.GetInt("Level 5", -1));
-
     }
 
     public void UpdateButtonStates()
@@ -34,13 +27,12 @@ public class ButtonsContoller : MonoBehaviour
 
             if (status == LevelStatus.Unlocked || status == LevelStatus.Completed)
             {
-                // levelButtons[i].interactable = true;
+                levelButtons[i].interactable = true;
                 levelButtons[i].GetComponent<Image>().color = Color.white;
-                // Change color to white or any color you prefer
             }
             else if (status == LevelStatus.Locked)
             {
-                // levelButtons[i].interactable = false;
+                levelButtons[i].interactable = false;
                 levelButtons[i].GetComponent<Image>().color = Color.gray;  
                 levelButtonTexts[i].color = Color.gray;
 

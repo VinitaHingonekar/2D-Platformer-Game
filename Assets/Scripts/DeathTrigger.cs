@@ -10,7 +10,6 @@ public class DeathTrigger : MonoBehaviour
 
     private void Start() 
     {
-        // PlayerController player = GetComponent<PlayerController>();
         startPoint = player.transform.position;  
     }
     
@@ -26,13 +25,8 @@ public class DeathTrigger : MonoBehaviour
             else
             {
                 Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
-                // rb.gravityScale = 0;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
-
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-            Debug.Log("Level Restart");
         }
     }
 }

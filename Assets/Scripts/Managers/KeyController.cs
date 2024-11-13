@@ -7,8 +7,6 @@ public class KeyController : MonoBehaviour
     public static int keysCollected = 0;
     private bool isPickedUp = false;
 
-    // public KeyManager keyManager;
-    
     private void OnTriggerEnter2D(Collider2D other) {
         if( other.gameObject.CompareTag("Player") && !isPickedUp)
         {
@@ -19,9 +17,6 @@ public class KeyController : MonoBehaviour
 
             keyManager.KeyCollected();
             keyManager.UpdateKeys();
-
-            // Debug.Log(keysCollected);
-            // Debug.Log("hitting " + other);
 
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             SoundManager.Instance.Play(Sounds.KeyPickup);

@@ -6,19 +6,8 @@ using UnityEngine.UI;
 
 public class LobbyController : MonoBehaviour
 {
-    // [SerializeField] private Button buttonPlay;
-    // [SerializeField] private Button buttonQuit;
-    // [SerializeField] private Button buttonLevels;
-
     [SerializeField] private GameObject levelsMenu;
     [SerializeField] private GameObject lobbyMenu;
-    
-    private void Awake( )
-    {
-        // buttonPlay.onClick.AddListener(PlayGame);
-        // buttonQuit.onClick.AddListener(QuitGame);
-        // buttonLevels.onClick.AddListener(OpenLevelsMenu);
-    }
 
     public void PlayGame()
     {

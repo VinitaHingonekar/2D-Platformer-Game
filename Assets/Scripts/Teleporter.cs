@@ -15,13 +15,6 @@ public class Teleporter : MonoBehaviour
 
     public GameObject teleportTextPanel;
 
-    // public Animator animator;
-
-    private void Start() 
-    {
-        // teleportTextPanel = GameObject.FindWithTag("TeleportPanel");
-    }
-
     private void Update()
     {
 
@@ -31,19 +24,6 @@ public class Teleporter : MonoBehaviour
             StartCoroutine(TeleportPlayer(playerTransform, playerAnimator));
         }
     }
-    
-    // private void OnTriggerEnter2D(Collider2D other) 
-    // {
-    //     if(other.gameObject.GetComponent<PlayerController>() != null && Input.GetKeyDown(KeyCode.E)) 
-    //     {
-    //         if(Vector2.Distance(other.transform.position, transform.position) > distance)
-    //         {
-    //             Animator playerAnimator = other.GetComponent<Animator>();
-
-    //             StartCoroutine(TeleportPlayer(other.transform, playerAnimator));
-    //         }
-    //     }  
-    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -58,7 +38,6 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // If player exits trigger area, prevent teleportation
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
             playerInRange = false;
@@ -75,7 +54,6 @@ public class Teleporter : MonoBehaviour
         pc.enabled = false;
         playerAnimator.SetTrigger("Teleport Start");
         
-
         yield return new WaitForSeconds(animationDelay);
 
         player.position = destination.position;

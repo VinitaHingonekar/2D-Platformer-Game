@@ -282,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2453253823599964397}
   playerCollider: {fileID: 9064819015866846375}
-  speed: 7
-  jump: 11
+  speed: 8
+  jump: 12
   scoreController: {fileID: 0}
 --- !u!114 &4572790102548760881
 MonoBehaviour:

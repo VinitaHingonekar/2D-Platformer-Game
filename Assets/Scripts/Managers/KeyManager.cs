@@ -25,16 +25,13 @@ public class KeyManager : MonoBehaviour
         {
             if (i < keysCollected)
             {
-                // keys[i].enabled = true;
-                // Debug.Log("Enembaled key no. " + i);
                 keyAnimators[i].SetTrigger("KeyPickedUp");
             }
         }   
-
-}
+    }
+    
     public void KeyCollected()
     {
         keysCollected++;
-        // Debug.Log(keysCollected);
     }
 }

@@ -14,7 +14,6 @@ public class GameOverController : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         restartButton.onClick.AddListener(ReloadGame);
-        Debug.Log("Restart button registered");
     }
 
     public void ShowGameOverScreen()
@@ -26,7 +25,6 @@ public class GameOverController : MonoBehaviour
     public void ReloadGame()
     {
         SoundManager.Instance.Play(Sounds.ButtonClick);
-        // Debug.Log("Reloading scene");
         SceneManager.LoadScene("Level 1");
         gameOverPanel.SetActive(false);
     }

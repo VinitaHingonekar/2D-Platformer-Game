@@ -28,15 +28,8 @@ public class PlayerController : MonoBehaviour
 
         colliderSize = playerCollider.size;
         colliderOffset = playerCollider.offset;
-
-        // Debug.Log("-Level 1: " + PlayerPrefs.GetInt("Level 1", -1));
-        // Debug.Log("-Level 2: " + PlayerPrefs.GetInt("Level 2", -1));
-        // Debug.Log("-Level 3: " + PlayerPrefs.GetInt("Level 3", -1));
-        // Debug.Log("-Level 4: " + PlayerPrefs.GetInt("Level 4", -1));
-        // Debug.Log("-Level 5: " + PlayerPrefs.GetInt("Level 5", -1));
     }
 
-    // Update is called once per frame
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -77,10 +70,6 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Jump");
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
         }
-        // else if(isGrounded)
-        // {
-        //     isJumping = false;
-        // }
     }
 
     public void Crouch(bool crouch)
@@ -125,7 +114,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            // Debug.Log("Is Grounded");
             isGrounded = true;
         }
     }
@@ -133,18 +121,20 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground"))
         {
-            // Debug.Log("Is not Grounded");
             isGrounded = false;
         }
     }
 
     public void KeyPickup()
     {
-        Debug.Log("Key Picked Up");
         scoreController.IncreaseScore(50);
     }
 
-    
+    public void CoinPickup()
+    {
+        scoreController.IncreaseScore(100);
+    }
+
     public void PlayDeathAnimation()
     {
         Debug.Log("Player Dead");

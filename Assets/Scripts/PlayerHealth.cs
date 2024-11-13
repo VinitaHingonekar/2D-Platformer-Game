@@ -12,7 +12,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI livesText;
 
     public float invincibilityDuration = 1.0f;
-    // private float invincibilityTimer;
     public float blinkDuration = 0.1f;
     private bool isInvincible;
 
@@ -26,15 +25,11 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
 
     private Animator[] heartAnimators;
-    // public Sprite emptyHeart;
-    
 
     private void Start() 
     {
-        // livesText = GetComponent<TextMeshProUGUI>();
         currentLives = playerLives;
         UpdateLives();
-        // invincibilityTimer = 0f;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -45,26 +40,18 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-
-    }
-
     public void TakeDamage(int damage)
     {
         if (!isInvincible)
         {
-            // if(currentLives > 0)
             currentLives -= damage;
                 
             Debug.Log("current lives : "+currentLives);
             UpdateLives();
-            // invincibilityTimer = invincibilityDuration;
 
             if(currentLives == 0)
             {
                 gameObject.GetComponent<PlayerController>().PlayDeathAnimation();
-                // Death();
                 SoundManager.Instance.Play(Sounds.PlayerDeath);
                 if (deathParticleSystem != null)
                 {
@@ -89,7 +76,6 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = true;
         float elapsedTime = 0f;
         Debug.Log("Started Coroutine invincibily");
-        // float blinkInterval;
 
         while (elapsedTime < invincibilityDuration)
         {
@@ -99,8 +85,6 @@ public class PlayerHealth : MonoBehaviour
             spriteRenderer.enabled = !spriteRenderer.enabled;
 
             yield return new WaitForSeconds(blinkDuration);
-
-            // spriteRenderer.enabled = true;
 
             elapsedTime += blinkDuration;
         }
@@ -113,28 +97,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void Death()
     {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // Destroy(gameObject);
-        // this.enabled = false;
-
-        
         gameOverController.ShowGameOverScreen();
     }
 
     public void UpdateLives()
     {
-        // if(currentLives < 0)
-        // {
-        //     livesText.text = "Lives : 0";
-        // }
-        // else 
-        //     livesText.text = "Lives : " + currentLives;
-        
-
-        // foreach (Image img in hearts)
-        // {
-        //     img.sprite = emptyHeart;
-        // }
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentLives)
@@ -147,8 +114,6 @@ public class PlayerHealth : MonoBehaviour
                 {
                     heartAnimators[i].SetTrigger("Lost");
                 }
-
-                // hearts[i].enabled = false;
             }
         }    
     }

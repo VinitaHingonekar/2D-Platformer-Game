@@ -9,17 +9,10 @@ public class LevelCompletePanel : MonoBehaviour
 {
     public ScoreController scoreController;
     public TextMeshProUGUI scoreText;
-
-    private void Start() 
-    {
-        // scoreController = FindObjectOfType<ScoreController>();   
-    }
     
     public void NextLevel(int level)
     {
         SoundManager.Instance.Play(Sounds.ButtonClick);
-        // string levelName = "Level " + level;
-        // SceneManager.LoadScene(levelName);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -27,12 +20,11 @@ public class LevelCompletePanel : MonoBehaviour
     {
         SoundManager.Instance.Play(Sounds.ButtonClick);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // levelsMenu.SetActive(true);
-        // lobbyMenu.SetActive(false);
     }
 
     public void MainMenu()
     {
+        SoundManager.Instance.Play(Sounds.ButtonClick);
         SceneManager.LoadScene(0);
     }
 

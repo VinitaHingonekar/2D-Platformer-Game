@@ -9,15 +9,7 @@ public class LevelComplete : MonoBehaviour
 
     public LevelCompletePanel levelCompletePanel;
 
-    private void Start() 
-    {
-        // levelCompletePanel = FindObjectOfType<LevelCompletePanel>();
-
-        // if (levelCompletePanel == null)
-        // {
-        //     Debug.LogWarning("LevelCompletePanel not found in the scene.");
-        // }
-    }
+    public GameObject text;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if( other.gameObject.GetComponent<PlayerController>() != null)
@@ -32,7 +24,6 @@ public class LevelComplete : MonoBehaviour
                     doorParticles.Play();
                 }
 
-                // StartCoroutine(LevelManager.Instance.LoadNextLevelWithDelay()); 
                 int level = SceneManager.GetActiveScene().buildIndex;
                 int totalScenes = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
                 
@@ -47,8 +38,16 @@ public class LevelComplete : MonoBehaviour
             }
             else
             {
-                Debug.Log("Collect all the keys");
+                text.SetActive(true);
             }
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.gameObject.GetComponent<PlayerController>() != null)
+        {   
+            text.SetActive(false);
         }
     }
 

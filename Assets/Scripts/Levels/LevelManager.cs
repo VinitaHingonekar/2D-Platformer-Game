@@ -37,11 +37,6 @@ public class LevelManager : MonoBehaviour
             }
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);
         }
-
-        // if(GetLevelStatus(Levels[0]) == LevelStatus.Locked)
-        // {
-        //     SetLevelStatus(Levels[0], LevelStatus.Unlocked);
-        // }
     }
 
     public LevelStatus GetLevelStatus(string level)
@@ -70,19 +65,4 @@ public class LevelManager : MonoBehaviour
             SetLevelStatus(Levels[nextSceneIndex], LevelStatus.Unlocked);
         }
     }
-
-    // public void LoadNextLevel()
-    // {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //     SoundManager.Instance.Play(Sounds.LevelNew);
-    // }
-
-    // public IEnumerator LoadNextLevelWithDelay()
-    // {
-    //     yield return new WaitForSeconds(delayTime);
-
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //     SoundManager.Instance.Play(Sounds.LevelNew);
-    // }
-
 }

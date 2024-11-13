@@ -12,7 +12,6 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] float moveSpeed = 1f;
 
-    // [SerializeField] Rigidbody2D rigidBody;
     public bool isFacingRight = true;
 
     private void Start() 
@@ -58,13 +57,6 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-
-    // private void OnTriggerExit2D(Collider2D other) 
-    // {
-    //     moveSpeed = -moveSpeed;
-    //     isFacingRight = !isFacingRight;
-    //     FlipEnemySprite();  
-    // }
 
     private void FlipEnemySprite()
     {
