@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - KeyManager
+  - TeleportPanel
   layers:
   - Default
   - TransparentFX
@@ -18,6 +21,12 @@ TagManager:
   - 
   - 
   - 
+  - Player
+  - 
+  - 
+  - Enemy
+  - 
+  - Collectibles
   - 
   - 
   - 
@@ -30,13 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Platform
   m_SortingLayers:
   - name: Default
     uniqueID: 0
